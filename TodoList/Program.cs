@@ -6,44 +6,46 @@ namespace TodoList
     class Task
     {
         string _name, _description;
-        bool _isDone;
+        bool _status;
         public Task()
         {
             _name = "";
             _description = "";
-            _isDone = false;
+            _status = false;
         }
         public Task(string name, string descroption)
         {
             _name = name;
             _description = descroption;
-            _isDone = false;
+            _status = false;
         }
-        public void setName(string name)
+
+        public bool Status
         {
-            if (name == null)
-            {
-                Console.WriteLine("Is empty!");
-                return;
+            get { return _status; }
+            set { _status = value;}
+        }
+
+        public string Name
+        {
+            get { return _name; }
+            set {
+                if (value == null)
+                    Console.WriteLine("Is empty!");
+                else
+                    _name = value;
             }
-            _name = name;
         }
-        public void setDescription(string description)
-        {
-            if (description == null)
-            {
-                Console.WriteLine("Is empty!");
-                return;
+
+        public string Description { 
+            get { return _description; }
+            set {
+                if (value == null)
+                    Console.WriteLine("Is empty!");
+                else
+                    _description = value;
             }
-            _description = description;
         }
-        public void setStatus(bool status)
-        {
-            _isDone = status;
-        }
-        public string getName() { return _name; }
-        public string getDescription() { return _description; }
-        public bool getStatus() { return _isDone; }
         public void Show()
         {
             Console.WriteLine("-----{0}-----", _name);
